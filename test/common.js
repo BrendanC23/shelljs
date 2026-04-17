@@ -203,6 +203,11 @@ test('non-string', t => {
   t.deepEqual(result, [5]);
 });
 
+test('glob with Windows-style backslash', (t) => {
+  const result = common.expand(['test\\resources\\file1.*']);
+  t.deepEqual(result, ['test/resources/file1.js', 'test/resources/file1.txt']);
+});
+
 //
 // common.buffer()
 //
