@@ -995,10 +995,12 @@ test('copy single file to itself should not erase content', t => {
 });
 
 test('cp with Windows-style backslash and glob pattern', (t) => {
+  utils.skipOnUnix(t, () => {
   const result = shell.cp('test\\resources\\file*.txt', t.context.tmp);
-  t.falsy(shell.error());
-  t.falsy(result.stderr);
-  t.is(result.code, 0);
-  t.truthy(fs.existsSync(`${t.context.tmp}/file1.txt`));
-  t.truthy(fs.existsSync(`${t.context.tmp}/file2.txt`));
+    t.falsy(shell.error());
+    t.falsy(result.stderr);
+    t.is(result.code, 0);
+    t.truthy(fs.existsSync(`${t.context.tmp}/file1.txt`));
+    t.truthy(fs.existsSync(`${t.context.tmp}/file2.txt`));
+  });
 });

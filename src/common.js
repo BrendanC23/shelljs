@@ -344,7 +344,7 @@ function expand(list) {
       var globOpts = globOptions();
       try {
         // Call convertPathToPattern to handle paths with backslashes
-        // See https://github.com/mrmlnc/fast-glob/blob/096a5b620f4224eb692bd8ff2c8de0e634e50d8e/README.md?plain=1#L658-L682
+        // See https://github.com/mrmlnc/fast-glob#convertpathtopatternpath
         ret = glob.sync(glob.convertPathToPattern(convertQuestionMarkForGlob(listEl)), globOpts);
       } catch (e) {
         // if glob fails, interpret the string literally
